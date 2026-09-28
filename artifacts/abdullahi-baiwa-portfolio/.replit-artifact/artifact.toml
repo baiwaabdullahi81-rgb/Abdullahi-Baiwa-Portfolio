@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Abdullahi Baiwa Portfolio"
+description = "A professional personal portfolio for Abdullahi Dangana Baiwa, showcasing cybersecurity, web development, networking, systems practice, and technical problem solving."
+version = "1.0.0"
+id = "artifacts/abdullahi-baiwa-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25694
+
+[services.development]
+run = "pnpm --filter @workspace/abdullahi-baiwa-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/abdullahi-baiwa-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/abdullahi-baiwa-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25694"
+BASE_PATH = "/"
