@@ -265,7 +265,7 @@ function Hero({ onCv }: { onCv: () => void }) {
           <div className="photo-ring">
             <div className="photo-inner">
               {!imageFailed ? (
-                <img src={profile.profileImagePath} alt={`${profile.name} profile`} onError={() => setImageFailed(true)} data-testid="img-profile" />
+               <img src={profile.profileImagePath} alt={`${profile.name} profile`} loading="eager" decoding="async" onError={() => setImageFailed(true)} data-testid="img-profile" />
               ) : (
                 <div className="profile-fallback">
                   <span>{profile.initials}</span>
@@ -300,7 +300,7 @@ function About() {
         <div className="about-profile">
           <div className="about-photo-ring">
             <div className="photo-inner">
-              {!imageFailed ? <img src={profile.secondaryProfileImagePath} alt={`${profile.name} alternate profile`} onError={() => setImageFailed(true)} /> : <div className="profile-fallback"><span>{profile.initials}</span></div>}
+               {!imageFailed ? <img src={profile.secondaryProfileImagePath} alt={`${profile.name} alternate profile`} loading="lazy" decoding="async" onError={() => setImageFailed(true)} /> : <div className="profile-fallback"><span>{profile.initials}</span></div>}
             </div>
           </div>
           <h3>Cybersecurity Specialist &amp; Web Developer</h3>
@@ -393,7 +393,7 @@ function SkillRing({ label, value, visible }: { label: string; value: number; vi
 }
 
 function Skills() {
-  const { ref, isVisible, hasEntered } = useSectionVisibility<HTMLElement>();
+  const { ref, hasEntered } = useSectionVisibility<HTMLElement>();
   return (
     <section ref={ref} id="skills" className={`content-section section-grid section-reveal ${hasEntered ? 'is-visible' : ''}`}>
       <div className="shell">
@@ -406,12 +406,12 @@ function Skills() {
         <div className="skills-layout">
           <div>
             <h3 className="subsection-title">Technical Skills</h3>
-            <SkillBars skills={profile.technicalSkills} visible={isVisible} />
+            <SkillBars skills={profile.technicalSkills} visible={hasEntered} />
           </div>
           <div>
             <h3 className="subsection-title">Professional Skills</h3>
             <div className="rings-grid">
-              {profile.professionalSkills.map((skill) => <SkillRing key={skill.label} label={skill.label} value={skill.value} visible={isVisible} />)}
+              {profile.professionalSkills.map((skill) => <SkillRing key={skill.label} label={skill.label} value={skill.value} visible={hasEntered} />)}
             </div>
           </div>
         </div>
@@ -427,7 +427,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <article className={`project-card ${project.accent === 'amber' ? 'project-amber' : ''} reveal`} data-testid={`card-project-${project.id}`}>
       <div className="project-icon">{isReady ? <BriefcaseBusiness size={24} /> : <ShieldCheck size={24} />}</div>
-      {!imageFailed && <img src={project.imagePath} alt="" aria-hidden="true" onError={() => setImageFailed(true)} className="project-image" />}
+       {!imageFailed && <img src={project.imagePath} alt="" aria-hidden="true" loading="lazy" decoding="async" onError={() => setImageFailed(true)} className="project-image" />}
       <div className="project-meta">{project.eyebrow} <span>{isReady ? 'Demo available' : 'Coming soon'}</span></div>
       <h3>{project.title}</h3>
       <p className="project-type">{project.type}</p>
@@ -559,7 +559,8 @@ function Contact() {
           <div className="contact-details">
             <h3>Let&apos;s Connect</h3>
             <a href={`mailto:${profile.email}`} data-testid="link-contact-email"><Mail size={18} />{profile.email}</a>
-            <a href={`tel:${profile.phone}`} data-testid="link-contact-phone"><Phone size={18} />{profile.phone}</a>
+             <a href={`tel:${profile.phone}`} data-testid="link-contact-phone"><Phone size={18} />{profile.phone}</a>
+             <a href={profile.whatsappUrl} target="_blank" rel="noreferrer" data-testid="link-contact-whatsapp"><MessageCircle size={18} />WhatsApp</a>
             <div><MapPin size={18} />{profile.location}</div>
             <h4>Follow Me</h4>
             <SocialLinks compact />

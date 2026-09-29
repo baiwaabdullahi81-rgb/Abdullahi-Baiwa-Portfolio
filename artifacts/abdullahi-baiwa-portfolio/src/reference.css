@@ -543,6 +543,7 @@ button {
   border: 1px solid var(--ref-border);
   border-radius: 8px;
   background: rgba(14, 36, 65, .52);
+  text-align: center;
 }
 
 .info-card span,
@@ -591,7 +592,6 @@ button {
 .service-card:hover {
   border-color: var(--ref-cyan);
   box-shadow: 0 0 22px rgba(8, 214, 255, .12);
-  transform: translateY(-5px);
 }
 
 .service-top {
@@ -1012,13 +1012,20 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 18px 0;
+  margin: 10px 0;
+  padding: 14px 15px;
+  border: 1px solid rgba(74, 151, 206, .28);
+  border-radius: 8px;
+  background: rgba(14, 36, 65, .42);
   color: var(--ref-muted);
   font-size: .92rem;
   text-decoration: none;
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
 }
 
 .contact-details > a:hover {
+  border-color: var(--ref-cyan);
+  background: rgba(8, 214, 255, .08);
   color: var(--ref-cyan);
 }
 

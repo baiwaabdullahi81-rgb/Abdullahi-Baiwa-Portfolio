@@ -1,0 +1,234 @@
+Perform ONE FINAL PROFESSIONAL POLISH PASS on my EXISTING portfolio website.
+
+IMPORTANT:
+- Do NOT rebuild the website from scratch.
+- Do NOT replace the current design with a different template.
+- Preserve the current overall visual style and structure that we already created.
+- Preserve my uploaded photos:
+  profile-1.jpg
+  profile-2.jpg
+- Preserve my uploaded CV:
+  Abdullahi-Dangana-Baiwa-CV.pdf
+- Do not remove existing sections or working features.
+- Do not ask me to upload anything again.
+- Make the website production-ready and publish-ready.
+
+MY NAME:
+Abdullahi Dangana Baiwa
+
+MAIN IDENTITY:
+Cybersecurity Student • Web Developer • Networking Specialist • Ethical Hacker • UI/UX Designer
+
+FINAL POLISH REQUIREMENTS:
+
+1. HERO / HOME
+- Keep the current animated hero.
+- Keep the real typewriter animation with these exact phrases:
+  A CYBERSECURITY STUDENT
+  A WEB DEVELOPER
+  A NETWORKING SPECIALIST
+  A UI/UX DESIGNER
+  AN ETHICAL HACKER
+- Make sure grammar never produces:
+  "I AM A AN ETHICAL HACKER"
+- Use natural text such as:
+  "I'M AN ETHICAL HACKER"
+  or display only the rotating phrases.
+- Keep the blinking cursor.
+- Make my main profile photo clearly visible and professionally presented.
+- Keep the animated/glowing background, but make sure it does not reduce text readability.
+- Make the hero responsive on mobile.
+- Keep Hire Me, WhatsApp, and CV buttons.
+- WhatsApp button should use:
+  https://wa.me/2348125766820
+- CV button should correctly download/open:
+  Abdullahi-Dangana-Baiwa-CV.pdf
+
+2. NAVIGATION
+- Make navigation clean and responsive.
+- On mobile, use a proper mobile menu.
+- Navigation links should scroll smoothly to the correct sections.
+- Make sure there are no broken links.
+- Keep the navigation visually consistent with the existing design.
+
+3. ABOUT
+- Keep the existing About content.
+- Center the main heading and icon.
+- Improve spacing and readability.
+- Make sure the text is not too wide on desktop.
+- Keep it professional and concise.
+
+4. EDUCATION
+- Keep Education centered.
+- Keep the large graduation-cap icon.
+- Education:
+  Edusoko University
+  Cybersecurity
+- Make the section visually balanced and responsive.
+
+5. SERVICES
+Keep all 8 services:
+- Cybersecurity
+- Ethical Hacking
+- Web Development
+- Networking
+- UI/UX Design
+- Linux & Systems
+- Technical Support
+- Bug Fixing
+
+Requirements:
+- Center the section.
+- Large bold icon above each service title.
+- Consistent card sizes.
+- Subtle hover animation.
+- Cards should not jump around when hovered.
+- Good spacing on mobile.
+
+6. SKILLS
+Technical skills:
+- Cybersecurity — 80%
+- Web Development — 85%
+- HTML & CSS — 90%
+- JavaScript — 75%
+- Python — 75%
+- Networking — 85%
+- Linux/Kali Linux — 80%
+- UI/UX — 75%
+- System Troubleshooting — 85%
+- Vulnerability Scanning — 75%
+
+Professional skills:
+- Problem Solving — 90%
+- Technical Troubleshooting — 90%
+- Critical Thinking — 85%
+- Communication — 80%
+- Teamwork — 80%
+- Adaptability — 85%
+
+Requirements:
+- Keep percentage numbers visible.
+- Progress bars must animate from 0 to their target percentage.
+- Animation must trigger when the Skills section enters the viewport.
+- Use IntersectionObserver or an equivalent reliable method.
+- Do not repeatedly restart the animation while scrolling.
+- Keep the skill layout clean and readable.
+- Make it responsive.
+
+7. PROJECTS
+Keep:
+FMC SMARTFLOW
+PAYGUARD
+
+FMC SMARTFLOW description should accurately describe it as a lightweight hospital operations intelligence system focused on patient flow, medical-record movement tracking, queues/waiting times, and bottleneck detection.
+
+PAYGUARD should remain clearly marked as an upcoming/in-development project unless there is already real completed functionality displayed on the site.
+
+Requirements:
+- Center the Projects heading.
+- Keep the large project/work icon.
+- Give each project a polished card.
+- Do not invent fake statistics, clients, awards, users, or deployment claims.
+- If project links do not exist, do not create fake URLs.
+- Use "Coming Soon" or "In Development" where appropriate.
+
+8. EXPERIENCE
+- Keep the approximately 2 years of hands-on technology/cybersecurity experience statement.
+- Present it professionally without inventing employers or job titles.
+- Keep the timeline/work icon.
+- Add scroll reveal animation.
+
+9. CERTIFICATES / TRAINING
+If this section already exists, keep it.
+Use factual wording:
+- Udemy training/certificates in relevant technical courses.
+- Networking training/certificate from FUT Minna.
+Do not invent certificate names, dates, grades, or institutions beyond information already present.
+
+10. CONTACT
+Show:
+Email:
+baiwaabdullahi81@gmail.com
+
+Phone:
+08125766820
+
+Location:
+Bida, Niger State, Nigeria
+
+Add:
+- Email action
+- WhatsApp action
+- Clean contact cards
+- Responsive layout
+- Clear Hire Me / Contact CTA
+
+11. SOCIAL MEDIA
+Keep existing social links:
+Instagram: @naijaradartv
+TikTok: @naijaradartv
+Facebook: dev by Abdul
+
+Do not create a GitHub link because I do not currently have one.
+
+12. SCROLL ANIMATIONS
+Make sections reveal smoothly as they enter the viewport:
+- About
+- Education
+- Services
+- Skills
+- Projects
+- Experience
+- Certificates/Training
+- Contact
+
+Use subtle animations only.
+Do not make the page slow or distracting.
+Do not animate everything continuously.
+
+13. RESPONSIVENESS
+Test and fix:
+- Desktop
+- Tablet
+- Android/mobile
+
+Important:
+- No horizontal scrolling.
+- No text overflowing.
+- No buttons going outside the screen.
+- Images must scale correctly.
+- Cards should stack properly on small screens.
+- Navigation must work on mobile.
+
+14. PERFORMANCE
+- Avoid unnecessary heavy libraries.
+- Avoid animations that continuously consume excessive CPU.
+- Optimize image rendering where possible without destroying image quality.
+- Lazy-load non-critical images if appropriate.
+- Keep the page fast.
+
+15. ACCESSIBILITY / UX
+- Buttons must have clear labels.
+- Images should have useful alt text.
+- Text must have sufficient contrast.
+- Keyboard focus should remain visible.
+- Links/buttons must be easy to tap on mobile.
+
+16. FINAL QUALITY CHECK
+Before finishing:
+- Check for console errors.
+- Check for broken imports.
+- Check for broken image paths.
+- Check CV path.
+- Check WhatsApp link.
+- Check navigation links.
+- Check mobile responsiveness.
+- Check that all sections render.
+- Check that animations do not cause layout shifting.
+- Fix any errors you find.
+
+VERY IMPORTANT:
+Do not change the current visual identity just for the sake of changing it.
+The goal is a polished, professional, responsive version of the EXISTING portfolio.
+
+When finished, leave the project ready for deployment/publishing.
