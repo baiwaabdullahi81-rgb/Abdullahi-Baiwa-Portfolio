@@ -1,4 +1,4 @@
-import { useEffect, useState, type ChangeEvent, type CSSProperties, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ChangeEvent, type CSSProperties, type FormEvent, type ReactNode } from 'react';
 import {
   ArrowDown,
   ArrowUpRight,
@@ -14,6 +14,7 @@ import {
   ExternalLink,
   Facebook,
   FileText,
+  Folder,
   Github,
   GraduationCap,
   Instagram,
@@ -43,6 +44,88 @@ const navLinks = [
   { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ];
+
+const typingPhrases = [
+  'A CYBERSECURITY STUDENT',
+  'A WEB DEVELOPER',
+  'A NETWORKING SPECIALIST',
+  'A UI/UX DESIGNER',
+  'AN ETHICAL HACKER',
+];
+
+function useSectionVisibility<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) setHasEntered(true);
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -10% 0px' },
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, isVisible, hasEntered };
+}
+
+function useTypewriter(phrases: readonly string[]) {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [text, setText] = useState('');
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const phrase = phrases[phraseIndex];
+    const isComplete = text === phrase;
+    const isEmpty = text.length === 0;
+    const delay = isComplete && !deleting ? 1500 : isEmpty && deleting ? 450 : deleting ? 52 : 82;
+    const timer = window.setTimeout(() => {
+      if (!deleting && !isComplete) {
+        setText(phrase.slice(0, text.length + 1));
+      } else if (!deleting && isComplete) {
+        setDeleting(true);
+      } else if (deleting && !isEmpty) {
+        setText(text.slice(0, -1));
+      } else {
+        setDeleting(false);
+        setPhraseIndex((index) => (index + 1) % phrases.length);
+      }
+    }, delay);
+    return () => window.clearTimeout(timer);
+  }, [deleting, phraseIndex, phrases, text]);
+
+  return text;
+}
+
+function useAnimatedValue(target: number, active: boolean) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!active) {
+      setValue(0);
+      return;
+    }
+    const startedAt = performance.now();
+    const duration = 1100;
+    let frame = 0;
+    const tick = (now: number) => {
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(target * eased);
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [active, target]);
+
+  return value;
+}
 
 function Logo() {
   return (
@@ -152,6 +235,7 @@ function SocialLinks({ compact = false }: { compact?: boolean }) {
 
 function Hero({ onCv }: { onCv: () => void }) {
   const [imageFailed, setImageFailed] = useState(false);
+  const typedPhrase = useTypewriter(typingPhrases);
   return (
     <section id="top" className="hero section-grid">
       <div className="shell hero-inner">
@@ -160,7 +244,7 @@ function Hero({ onCv }: { onCv: () => void }) {
           <h1 className="hero-name">
             Abdullahi <span>Baiwa</span>
           </h1>
-          <h2 className="hero-role">And I&apos;m a <span>Cybersecurity Specialist</span></h2>
+          <h2 className="hero-role" aria-live="polite">And I&apos;m <span>{typedPhrase}</span><i className="typewriter-cursor" aria-hidden="true" /></h2>
           <p className="hero-description">
             Cybersecurity, web development, networking, ethical hacking and digital solutions built with clarity, care and practical problem solving.
           </p>
@@ -204,10 +288,12 @@ function Hero({ onCv }: { onCv: () => void }) {
 
 function About() {
   const [imageFailed, setImageFailed] = useState(false);
+  const { ref, hasEntered } = useSectionVisibility<HTMLElement>();
   return (
-    <section id="about" className="content-section section-grid">
+    <section ref={ref} id="about" className={`content-section section-grid section-reveal ${hasEntered ? 'is-visible' : ''}`}>
       <div className="shell about-layout">
         <div className="section-title">
+          <GraduationCap className="section-icon" size={48} strokeWidth={1.7} aria-hidden="true" />
           <h2>About <span>Me</span></h2>
           <span className="title-line" />
         </div>
@@ -241,10 +327,12 @@ function About() {
 }
 
 function WhatIDo() {
+  const { ref, hasEntered } = useSectionVisibility<HTMLElement>();
   return (
-    <section id="what-i-do" className="content-section section-grid section-tint">
+    <section ref={ref} id="what-i-do" className={`content-section section-grid section-tint section-reveal ${hasEntered ? 'is-visible' : ''}`}>
       <div className="shell">
         <div className="section-title">
+          <BriefcaseBusiness className="section-icon" size={48} strokeWidth={1.7} aria-hidden="true" />
           <h2>What I <span>Do</span></h2>
           <span className="title-line" />
           <p>SECURITY, SOFTWARE &amp; DIGITAL SOLUTIONS</p>
@@ -254,7 +342,8 @@ function WhatIDo() {
             const Icon = serviceIcons[index];
             return (
               <article key={service.number} className="service-card reveal" style={{ '--delay': `${(index % 4) * 60}ms` } as CSSProperties}>
-                <div className="service-top"><span>{service.number}</span><Icon size={24} /></div>
+                <div className="service-top"><span>{service.number}</span></div>
+                <div className="service-icon"><Icon size={46} strokeWidth={1.7} aria-hidden="true" /></div>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
               </article>
@@ -266,29 +355,37 @@ function WhatIDo() {
   );
 }
 
-function SkillBars({ skills }: { skills: readonly { readonly label: string; readonly value: number }[] }) {
+function SkillBars({ skills, visible }: { skills: readonly { readonly label: string; readonly value: number }[]; visible: boolean }) {
   return (
     <div className="skill-bars">
       {skills.map((skill, index) => (
-        <div key={skill.label} className="skill-row reveal" style={{ '--delay': `${index * 50}ms` } as CSSProperties} data-testid={`skill-${skill.label.toLowerCase().replace(/[^a-z]+/g, '-')}`}>
-          <div className="skill-label"><span>{skill.label}</span><strong>{skill.value}%</strong></div>
-          <div className="bar-track"><div className="bar-fill" style={{ '--skill-progress': skill.value / 100 } as CSSProperties} /></div>
-        </div>
+        <SkillBar key={skill.label} skill={skill} index={index} visible={visible} />
       ))}
     </div>
   );
 }
 
-function SkillRing({ label, value }: { label: string; value: number }) {
-  const circumference = 2 * Math.PI * 42;
+function SkillBar({ skill, index, visible }: { skill: { readonly label: string; readonly value: number }; index: number; visible: boolean }) {
+  const animatedValue = useAnimatedValue(skill.value, visible);
   return (
-    <div className="skill-ring-wrap">
+    <div className="skill-row reveal" style={{ '--delay': `${index * 50}ms` } as CSSProperties} data-testid={`skill-${skill.label.toLowerCase().replace(/[^a-z]+/g, '-')}`}>
+      <div className="skill-label"><span>{skill.label}</span><strong>{Math.round(animatedValue)}%</strong></div>
+      <div className="bar-track"><div className="bar-fill" style={{ width: `${animatedValue}%` }} /></div>
+    </div>
+  );
+}
+
+function SkillRing({ label, value, visible }: { label: string; value: number; visible: boolean }) {
+  const circumference = 2 * Math.PI * 42;
+  const animatedValue = useAnimatedValue(value, visible);
+  return (
+    <div className="skill-ring-wrap reveal">
       <div className="skill-ring">
         <svg viewBox="0 0 100 100" aria-hidden="true">
           <circle className="ring-base" cx="50" cy="50" r="42" />
-          <circle className="ring-value" cx="50" cy="50" r="42" style={{ '--ring-length': circumference, '--ring-progress': circumference * (value / 100) } as CSSProperties} />
+          <circle className="ring-value" cx="50" cy="50" r="42" style={{ '--ring-length': circumference, '--ring-progress': circumference * (animatedValue / 100) } as CSSProperties} />
         </svg>
-        <strong>{value}%</strong>
+        <strong>{Math.round(animatedValue)}%</strong>
       </div>
       <span>{label}</span>
     </div>
@@ -296,10 +393,12 @@ function SkillRing({ label, value }: { label: string; value: number }) {
 }
 
 function Skills() {
+  const { ref, isVisible, hasEntered } = useSectionVisibility<HTMLElement>();
   return (
-    <section id="skills" className="content-section section-grid">
+    <section ref={ref} id="skills" className={`content-section section-grid section-reveal ${hasEntered ? 'is-visible' : ''}`}>
       <div className="shell">
         <div className="section-title">
+          <Code2 className="section-icon" size={48} strokeWidth={1.7} aria-hidden="true" />
           <h2>My <span>Skills</span></h2>
           <span className="title-line" />
           <p>SELF-DESCRIBED PORTFOLIO INDICATORS</p>
@@ -307,12 +406,12 @@ function Skills() {
         <div className="skills-layout">
           <div>
             <h3 className="subsection-title">Technical Skills</h3>
-            <SkillBars skills={profile.technicalSkills} />
+            <SkillBars skills={profile.technicalSkills} visible={isVisible} />
           </div>
           <div>
             <h3 className="subsection-title">Professional Skills</h3>
             <div className="rings-grid">
-              {profile.professionalSkills.map((skill) => <SkillRing key={skill.label} label={skill.label} value={skill.value} />)}
+              {profile.professionalSkills.map((skill) => <SkillRing key={skill.label} label={skill.label} value={skill.value} visible={isVisible} />)}
             </div>
           </div>
         </div>
@@ -353,10 +452,12 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 function Work() {
+  const { ref, hasEntered } = useSectionVisibility<HTMLElement>();
   return (
-    <section id="projects" className="content-section section-grid section-tint">
+    <section ref={ref} id="projects" className={`content-section section-grid section-tint section-reveal ${hasEntered ? 'is-visible' : ''}`}>
       <div className="shell">
         <div className="section-title">
+          <Folder className="section-icon" size={48} strokeWidth={1.7} aria-hidden="true" />
           <h2>My <span>Projects</span></h2>
           <span className="title-line" />
           <p>SELECTED WORK, SHOWN HONESTLY</p>
@@ -368,10 +469,12 @@ function Work() {
 }
 
 function Experience() {
+  const { ref, hasEntered } = useSectionVisibility<HTMLElement>();
   return (
-    <section id="experience" className="content-section section-grid">
+    <section ref={ref} id="experience" className={`content-section section-grid section-reveal ${hasEntered ? 'is-visible' : ''}`}>
       <div className="shell">
         <div className="section-title">
+          <BriefcaseBusiness className="section-icon" size={48} strokeWidth={1.7} aria-hidden="true" />
           <h2>Experience <span>&amp; Credentials</span></h2>
           <span className="title-line" />
         </div>
@@ -432,6 +535,7 @@ function Contact() {
   const [status, setStatus] = useState<'idle' | 'error' | 'success'>('idle');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const { ref, hasEntered } = useSectionVisibility<HTMLElement>();
   const submit = (event: FormEvent) => {
     event.preventDefault();
     const next: Record<string, string> = {};
@@ -443,9 +547,10 @@ function Contact() {
     setStatus('success');
   };
   return (
-    <section id="contact" className="content-section section-grid section-tint contact-section">
+    <section ref={ref} id="contact" className={`content-section section-grid section-tint contact-section section-reveal ${hasEntered ? 'is-visible' : ''}`}>
       <div className="shell">
         <div className="section-title">
+          <Mail className="section-icon" size={48} strokeWidth={1.7} aria-hidden="true" />
           <h2>Get In <span>Touch</span></h2>
           <span className="title-line" />
           <p>I&apos;M OPEN TO DISCUSSING NEW OPPORTUNITIES AND INTERESTING PROJECTS</p>

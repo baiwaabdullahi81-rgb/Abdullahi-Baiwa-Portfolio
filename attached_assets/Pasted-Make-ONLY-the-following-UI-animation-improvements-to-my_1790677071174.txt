@@ -1,0 +1,199 @@
+Make ONLY the following UI/animation improvements to my EXISTING portfolio. Do not rebuild the entire website and do not change the existing overall design, photos, CV, content, colors, or reference style.
+
+1. TYPING ANIMATION
+The hero text must have a REAL typewriter animation.
+
+It must:
+- type one character at a time
+- pause when the word/phrase is complete
+- delete one character at a time
+- type the next phrase
+- continue looping forever
+- have a blinking cursor
+
+Cycle through:
+"A CYBERSECURITY STUDENT"
+"A WEB DEVELOPER"
+"A NETWORKING SPECIALIST"
+"A UI/UX DESIGNER"
+"AN ETHICAL HACKER"
+
+Make sure the grammar is correct. Never display "I AM A AN ETHICAL HACKER".
+
+2. CENTERED INFORMATION SECTIONS
+Center the important content in:
+- About
+- Education
+- What I Do / Services
+- Skills
+- Professional Skills
+- Projects
+- Experience
+- Contact where appropriate
+
+Do not simply center every line of text. Create a professional centered composition with good max-widths and spacing.
+
+3. LARGE ICONS ABOVE SECTIONS
+For Education, What I Do/Services, Skills, Projects and other major sections where appropriate:
+
+Place a LARGE, BOLD, visually strong icon above the section heading.
+
+The icon should:
+- be centered
+- be clearly visible
+- use the site's existing futuristic accent colors
+- have subtle glow
+- have enough spacing from the heading
+- animate subtly on scroll/hover
+
+Use appropriate icons, for example:
+Education → graduation cap
+Services → briefcase/tools
+Skills → code/chart
+Projects → folder/laptop/code
+Experience → timeline/work icon
+
+Do NOT use tiny icons.
+
+4. WHAT I DO / SERVICES
+Center the entire What I Do section.
+
+Each service should have:
+LARGE BOLD ICON
+SERVICE TITLE
+SHORT DESCRIPTION
+
+Use:
+Cybersecurity
+Ethical Hacking
+Web Development
+Networking
+UI/UX Design
+Linux & Systems
+Technical Support
+Bug Fixing
+
+Make the icons prominent and visually consistent.
+
+5. SKILLS — SCROLL-TRIGGERED ANIMATION
+This is VERY IMPORTANT.
+
+The skill percentages must NOT already be filled when the page first loads.
+
+When the Skills section is NOT visible:
+- progress bars should be at 0%
+
+When the user scrolls down and the Skills section enters the viewport:
+- animate each progress bar from 0% to its actual percentage
+- animate the percentage number from 0 to its final number
+
+Examples:
+
+Cybersecurity:
+0% → 80%
+
+Web Development:
+0% → 85%
+
+HTML & CSS:
+0% → 90%
+
+JavaScript:
+0% → 75%
+
+Python:
+0% → 75%
+
+Networking:
+0% → 85%
+
+Linux / Kali Linux:
+0% → 80%
+
+UI/UX:
+0% → 75%
+
+System Troubleshooting:
+0% → 85%
+
+Vulnerability Scanning:
+0% → 75%
+
+Use IntersectionObserver or an equivalent reliable viewport detection method.
+
+The animation must begin ONLY when the Skills section becomes visible.
+
+6. PROFESSIONAL SKILLS — SCROLL-TRIGGERED ANIMATION
+Do the same for Professional Skills.
+
+When the section is outside the viewport:
+progress = 0%
+
+When the user reaches the section:
+animate from 0% to:
+
+Problem Solving → 90%
+Technical Troubleshooting → 90%
+Critical Thinking → 85%
+Communication → 80%
+Teamwork → 80%
+Adaptability → 85%
+
+The percentage number must also count upward during the animation.
+
+Do not show the final percentages immediately before the user reaches the section.
+
+7. PROJECTS
+Center the Projects section.
+
+At the top place:
+LARGE BOLD PROJECT/WORK ICON
+
+Then:
+PROJECTS
+
+Then the project content.
+
+Keep:
+
+FMC SMARTFLOW
+PAYGUARD
+
+Make the project presentation centered and visually balanced while keeping the existing project information.
+
+8. SCROLL REVEAL
+For major sections, use subtle scroll-triggered reveal animations.
+
+The animation should start when the section enters the viewport.
+
+Do NOT animate everything immediately when the website first loads.
+
+Use:
+- fade
+- slide upward
+- subtle scale
+- glow
+
+Keep it professional and smooth.
+
+9. IMPORTANT
+Do NOT:
+- remove my photos
+- remove my CV
+- change my existing project information
+- replace the existing website with a new template
+- change the overall reference-inspired design
+- create fake information
+- add unnecessary sections
+
+ONLY improve the requested:
+typing animation,
+centered layouts,
+large icons,
+services presentation,
+skills animations,
+professional skills animations,
+projects presentation,
+and scroll-triggered animations.
+
+After making the changes, test the website and make sure there are no JavaScript errors, no broken icons, and no console errors.
