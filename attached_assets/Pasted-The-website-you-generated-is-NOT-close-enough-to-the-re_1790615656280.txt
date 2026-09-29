@@ -1,0 +1,119 @@
+The website you generated is NOT close enough to the reference website I originally provided.
+
+I want you to revise the EXISTING website.
+
+Reference website:
+https://scriptkid0550.github.io/Sam-Michael---Portfolio/
+
+Go back and carefully analyze the reference website's:
+
+- overall page structure
+- hero section layout
+- navigation
+- typography
+- spacing
+- section order
+- cards
+- skill bars
+- buttons
+- profile-image placement
+- project presentation
+- experience section
+- certificate section
+- contact section
+- footer
+- responsive mobile layout
+- animations
+- visual hierarchy
+- dark theme
+- decorative elements
+
+The goal is NOT to make a generic cybersecurity portfolio.
+
+The goal is to create an ORIGINAL portfolio for Abdullahi Dangana Baiwa that follows the REFERENCE'S DESIGN LANGUAGE AND STRUCTURE MUCH MORE CLOSELY.
+
+Keep my information and replace the reference person's information with mine.
+
+My name:
+Abdullahi Dangana Baiwa
+
+Location:
+Bida, Niger State, Nigeria
+
+Email:
+baiwaabdullahi81@gmail.com
+
+Phone:
+08125766820
+
+Main areas:
+Cybersecurity
+Web Development
+Networking
+Ethical Hacking
+UI/UX Design
+Programming
+Linux & Systems
+Technical Support
+Bug Fixing
+Vulnerability Scanning
+
+Main project:
+FMC SMARTFLOW
+
+Upcoming project:
+PAYGUARD — Coming Soon
+
+Instagram:
+@naijaradartv
+
+TikTok:
+@naijaradartv
+
+Facebook:
+Dev by Abdul
+
+Do not invent my GitHub account.
+
+Do not invent awards.
+
+Do not invent employers or fake companies.
+
+Use approximately 2 years of hands-on technology experience.
+
+Education:
+Edusoko University — Cybersecurity
+
+Certificates:
+Udemy technology courses
+Networking training/certificate from FUT Minna
+
+IMPORTANT:
+
+Do NOT simply redesign the current website from scratch with a different style.
+
+Modify the existing implementation so that its visual structure and user experience are MUCH CLOSER to the supplied reference.
+
+Use the reference only as design/structure inspiration. Do not copy its personal content, photographs, name, certificates, projects, or private information.
+
+I will provide my own profile photograph later.
+
+Create the image paths so I can easily replace the images.
+
+Also preserve the existing functionality:
+
+- responsive navigation
+- smooth scrolling
+- skill animations
+- project cards
+- contact form
+- Hire Me button
+- WhatsApp button
+- Download CV button
+- mobile responsiveness
+
+After making the changes, run the application and inspect the result at desktop and mobile sizes.
+
+Do not stop after making superficial changes.
+
+Make the result visually polished and substantially closer to the reference while remaining an original portfolio belonging to Abdullahi Dangana Baiwa.

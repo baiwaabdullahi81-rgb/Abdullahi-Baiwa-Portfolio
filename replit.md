@@ -27,8 +27,9 @@ One-page professional portfolio for Abdullahi Dangana Baiwa, focused on cybersec
 ## Where things live
 
 - `artifacts/abdullahi-baiwa-portfolio/src/data/profile.ts` — editable personal identity, contact details, skills, services, projects, experience, and credentials
-- `artifacts/abdullahi-baiwa-portfolio/src/App.tsx` — single-page portfolio sections and interactions
-- `artifacts/abdullahi-baiwa-portfolio/src/index.css` — typography, tokens, textures, motion, and responsive styles
+- `artifacts/abdullahi-baiwa-portfolio/src/AppReference.tsx` — single-page portfolio sections and interactions, refactored toward the supplied reference structure
+- `artifacts/abdullahi-baiwa-portfolio/src/reference.css` — reference-inspired navy grid theme, glow accents, responsive layout, cards, meters, and motion
+- `artifacts/abdullahi-baiwa-portfolio/src/index.css` — shared Tailwind base and font setup
 - `artifacts/abdullahi-baiwa-portfolio/public/images/profile.jpg` — optional user-provided profile image path
 - `artifacts/abdullahi-baiwa-portfolio/public/documents/Abdullahi-Dangana-Baiwa-CV.pdf` — optional CV path
 
