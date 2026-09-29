@@ -9,10 +9,12 @@ const basePath = process.env.BASE_PATH || '/';
 
 export default defineConfig({
   base: basePath,
+
   plugins: [
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
+
     ...(process.env.NODE_ENV !== 'production' &&
     process.env.REPL_ID !== undefined
       ? [
@@ -27,6 +29,7 @@ export default defineConfig({
         ]
       : []),
   ],
+
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, 'src'),
@@ -37,22 +40,28 @@ export default defineConfig({
         'attached_assets',
       ),
     },
+
     dedupe: ['react', 'react-dom'],
   },
+
   root: path.resolve(import.meta.dirname),
+
   build: {
-    outDir: path.resolve(import.meta.dirname, 'dist/public'),
+    outDir: path.resolve(import.meta.dirname, 'dist'),
     emptyOutDir: true,
   },
+
   server: {
     port: 5173,
     strictPort: false,
     host: '0.0.0.0',
     allowedHosts: true,
+
     fs: {
       strict: true,
     },
   },
+
   preview: {
     port: 4173,
     host: '0.0.0.0',
