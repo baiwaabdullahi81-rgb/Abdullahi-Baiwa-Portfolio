@@ -214,7 +214,7 @@ function About() {
         <div className="about-profile">
           <div className="about-photo-ring">
             <div className="photo-inner">
-              {!imageFailed ? <img src={profile.profileImagePath} alt="" aria-hidden="true" onError={() => setImageFailed(true)} /> : <div className="profile-fallback"><span>{profile.initials}</span></div>}
+              {!imageFailed ? <img src={profile.secondaryProfileImagePath} alt={`${profile.name} alternate profile`} onError={() => setImageFailed(true)} /> : <div className="profile-fallback"><span>{profile.initials}</span></div>}
             </div>
           </div>
           <h3>Cybersecurity Specialist &amp; Web Developer</h3>
@@ -491,10 +491,14 @@ function Footer({ onCv }: { onCv: () => void }) {
 }
 
 function Home() {
-  const [notice, setNotice] = useState('');
   const showCv = () => {
-    setNotice(`CV file not configured yet. Add ${profile.cvPath} to the public folder to enable downloads.`);
-    window.setTimeout(() => setNotice(''), 6000);
+    const link = document.createElement('a');
+    link.href = profile.cvPath;
+    link.download = 'Abdullahi-Dangana-Baiwa-CV.pdf';
+    link.rel = 'noopener';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   };
   useEffect(() => {
     document.title = 'Abdullahi Dangana Baiwa | Cybersecurity & Web Developer';
@@ -517,7 +521,6 @@ function Home() {
       </main>
       <Footer onCv={showCv} />
       <a href={profile.whatsappUrl} target="_blank" rel="noreferrer" aria-label="Chat with Abdullahi on WhatsApp" data-testid="link-whatsapp" className="floating-whatsapp"><MessageCircle size={23} /></a>
-      {notice && <div role="status" data-testid="status-cv-missing" className="cv-notice"><CircleAlert size={17} /><span>{notice}</span><button onClick={() => setNotice('')} aria-label="Dismiss notice" data-testid="button-dismiss-notice"><X size={15} /></button></div>}
     </div>
   );
 }

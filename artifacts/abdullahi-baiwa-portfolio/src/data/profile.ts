@@ -11,6 +11,7 @@ export const profile = {
   whatsappUrl: 'https://wa.me/2348125766820?text=Hello%20Abdullahi%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.',
   cvPath: '/documents/Abdullahi-Dangana-Baiwa-CV.pdf',
   profileImagePath: '/images/profile.jpg',
+  secondaryProfileImagePath: '/images/profile-secondary.jpg',
   heroHeadline: 'Build securely. Solve clearly.',
   tagline: 'Building digital solutions, securing systems, solving technical problems, and helping organizations stay protected.',
   summary: 'I help individuals and organizations solve technical problems, build secure digital solutions, identify vulnerabilities, troubleshoot systems and networks, and protect digital environments from cyber threats.',
