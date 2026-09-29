@@ -61,8 +61,8 @@
   --app-font-mono: 'DM Mono', ui-monospace, monospace;
   --app-font-display: 'Space Grotesk', 'Manrope', sans-serif;
   --radius: 0.6rem;
-  --shadow-sm: 0 1px 2px rgba(31, 41, 39, .05);
-  --shadow-md: 0 12px 32px rgba(31, 41, 39, .08);
+  --shadow-sm: 0 1px 2px rgba(31, 41, 39, 0.05);
+  --shadow-md: 0 12px 32px rgba(31, 41, 39, 0.08);
 }
 
 .dark {
@@ -90,59 +90,191 @@
 }
 
 @layer base {
-  * { @apply border-border; }
-  html { scroll-behavior: smooth; }
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
     margin: 0;
+    min-height: 100vh;
   }
-  ::selection { background: hsl(var(--accent)); color: hsl(var(--foreground)); }
-  :focus-visible { outline: 2px solid hsl(var(--accent)); outline-offset: 4px; }
+
+  ::selection {
+    background: hsl(var(--accent));
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--accent));
+    outline-offset: 4px;
+  }
 }
 
 @layer utilities {
-  .font-display { font-family: var(--app-font-display); }
-  .font-mono-ui { font-family: var(--app-font-mono); }
-  .text-balance { text-wrap: balance; }
+  .font-display {
+    font-family: var(--app-font-display);
+  }
+
+  .font-mono-ui {
+    font-family: var(--app-font-mono);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
   .grid-paper {
-    background-image: linear-gradient(rgba(53, 81, 76, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(53, 81, 76, .07) 1px, transparent 1px);
+    background-image:
+      linear-gradient(
+        rgba(53, 81, 76, 0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(53, 81, 76, 0.07) 1px,
+        transparent 1px
+      );
     background-size: 32px 32px;
   }
+
   .scanline {
-    background-image: linear-gradient(to bottom, transparent 49%, rgba(255,255,255,.035) 50%, transparent 51%);
+    background-image: linear-gradient(
+      to bottom,
+      transparent 49%,
+      rgba(255, 255, 255, 0.035) 50%,
+      transparent 51%
+    );
     background-size: 100% 5px;
   }
+
   .noise::after {
     content: "";
     pointer-events: none;
     position: fixed;
     z-index: 50;
     inset: 0;
-    opacity: .028;
+    opacity: 0.028;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
   }
 }
 
-.reveal { animation: reveal .75s cubic-bezier(.2,.75,.25,1) both; }
-.reveal-delay-1 { animation-delay: .1s; }
-.reveal-delay-2 { animation-delay: .2s; }
-.reveal-delay-3 { animation-delay: .3s; }
-.reveal-delay-4 { animation-delay: .4s; }
-.skill-fill { transform-origin: left center; animation: skill-fill 1.1s cubic-bezier(.2,.75,.25,1) .25s both; }
+/* =========================================================
+   REVEAL ANIMATION
+   Content is explicitly visible by default.
+   ========================================================= */
+
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  animation: reveal 0.75s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+  animation-delay: 0.4s;
+}
+
+/* =========================================================
+   SKILL BAR ANIMATION
+   ========================================================= */
+
+.skill-fill {
+  transform-origin: left center;
+  animation: skill-fill 1.1s cubic-bezier(0.2, 0.75, 0.25, 1) 0.25s both;
+}
+
+/* =========================================================
+   GENERAL ANIMATIONS
+   ========================================================= */
+
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 @keyframes skill-fill {
-  from { opacity: .35; transform: scaleX(0); }
-  to { opacity: 1; transform: scaleX(var(--skill-progress)); }
+  from {
+    opacity: 0.35;
+    transform: scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(var(--skill-progress));
+  }
 }
+
 @keyframes drift {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
-.drift { animation: drift 5s ease-in-out infinite; }
+
+.drift {
+  animation: drift 5s ease-in-out infinite;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   MOBILE SAFETY
+   ========================================================= */
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
